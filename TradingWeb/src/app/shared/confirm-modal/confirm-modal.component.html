@@ -1,0 +1,12 @@
+<ng-template #modelWin let-modal>
+  <div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{confirmMessage}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="onNo()">No</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="onYes()">Yes</button>
+  </div>
+</ng-template>

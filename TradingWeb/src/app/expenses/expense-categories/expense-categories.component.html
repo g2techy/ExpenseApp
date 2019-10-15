@@ -1,0 +1,36 @@
+<table class="table table-sm table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" style="width:50px;"></th>
+      <th scope="col">Category</th>
+      <th scope="col" class="text-right">Total Expense</th>
+      <th scope="col" class="text-right">Expense Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of expenseCategories">
+      <td class="text-center">
+        <i class="fa fa-list-ul action-icon" ngbTooltip="Show expenses" (click)="showExpenses(expenseList, item.categoryId)"></i>
+      </td>
+      <td>{{item.categoryName}}</td>
+      <td class="text-right">{{item.expenseAmount | inrCurrency}}</td>
+      <td class="text-right">{{item.expenseCount}}</td>
+    </tr>
+    <tr class="tbl-tr-total" *ngIf="totalExpense && totalExpense > 0">
+      <td class="text-right" colspan="2">Total Expense</td>
+      <td class="text-right">{{totalExpense | inrCurrency}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #expenseList let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Expenses</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-expense-list [expenses]="selectedExpenses"></app-expense-list>
+  </div>
+</ng-template>

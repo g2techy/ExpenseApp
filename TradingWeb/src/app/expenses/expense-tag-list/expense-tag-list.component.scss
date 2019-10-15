@@ -1,0 +1,20 @@
+.exp-tag-container {
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.exp-tag {
+    padding: 1px 10px;
+    background-color: #ced4da;
+    margin: 3px 5px;
+    display: inline-block;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: #000;
+}
+.exp-tag-container .selected {
+    background-color: gray;
+    border-color: gray;
+    color: #FFF;
+}

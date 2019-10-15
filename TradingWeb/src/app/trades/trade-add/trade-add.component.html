@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header">
+    Add New Trade
+  </div>
+  <div class="card-body">
+    <form [formGroup]="tradeForm" (submit)="onSubmit()" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label class="control-label">Trade Type:</label>
+          <br />
+          <div class="btn-group btn-group-toggle" ngbRadioGroup name="tradeTypeId" formControlName="tradeTypeId">
+            <label ngbButtonLabel class="btn-primary" *ngFor="let item of tradeTypeList;">
+              <input ngbButton type="radio" value="{{item.typeValueId}}"> {{item.typeValueName}}
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Exchange:</label>
+          <br />
+          <div class="btn-group btn-group-toggle" ngbRadioGroup name="exchangeId" formControlName="exchangeId">
+            <label ngbButtonLabel class="btn-primary" *ngFor="let item of exchangeList;">
+              <input ngbButton type="radio" value="{{item.typeValueId}}"> {{item.typeValueName}}
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Stock Code:</label>
+          <input type="hidden" formControlName="stockId">
+          <input class="form-control" formControlName="stockCode" placeholder="Stock Code" (selectItem)="onStockSelected($event)"
+                 [ngbTypeahead]="search" [resultFormatter]="formatter" [inputFormatter]="inputFormatter" [showHint]="true" [class.is-invalid]="searchFailed" />
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Trade Date:</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="tradeDate" ngbDatepicker #tradeDate="ngbDatepicker" placeholder="Trade Date">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="tradeDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Quantity:</label>
+          <input class="form-control" type="number" formControlName="quantity" placeholder="Quantity">
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Price:</label>
+          <input class="form-control" type="number" formControlName="stockPrice" placeholder="Price">
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Brokerage:</label>
+          <input class="form-control" type="number" formControlName="brokerage" placeholder="Brokerage">
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">GST:</label>
+          <input class="form-control" type="number" formControlName="gst" placeholder="GST">
+        </div>
+      </div>     
+      <div class="form-group btn-container" style="text-align:center;">
+        <button type="submit" class="btn btn-primary" [disabled]="!isFormValid">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>          
+      </div>
+    </form>
+  </div>
+</div>
+    
+    

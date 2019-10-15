@@ -1,0 +1,17 @@
+<div class="tag-container" *ngFor="let item of fundSources" (click)="showExpenses(expenseList, item.fundSourceId)">
+  <div class="tag-name">{{item.fundSourceName + ' (' + item.expenseCount + ')'}}</div>
+  <div class="tag-amt">{{item.expenseAmount | inrCurrency}}</div>
+</div>
+  
+<ng-template #expenseList let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Expenses</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-expense-list [expenses]="selectedExpenses"></app-expense-list>
+  </div>
+</ng-template>
+      

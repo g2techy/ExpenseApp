@@ -1,0 +1,4 @@
+<div class="exp-tag-container">
+  <span [ngClass]="{'exp-tag': true, 'selected': item.selected === true}" *ngFor="let item of tags" (click)="item.selected = !item.selected">{{item.typeValueName}}</span>
+</div>
+

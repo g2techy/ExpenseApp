@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/FontAwesome/css/all.min.css';
+@import './assets/css/layout.css';
+
+.btn-container button {
+    margin-right: 10px;
+}
+.btn-container button:last-child {
+    margin-right: 0px;
+}
+
+form .form-group:last-child {
+    margin-bottom:0;
+}
+
+.ng-valid:not(form), .ng-valid.required  {
+	border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+	border-left: 5px solid #a94442; /* red */
+}
+
+.action-icon {
+    cursor: pointer;
+}
+
+.tbl-tr-total td {
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    font-weight: 600;
+}

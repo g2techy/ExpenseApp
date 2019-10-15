@@ -1,0 +1,36 @@
+<table class="table table-sm table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" style="width:60px;"></th>
+      <th scope="col" style="width:40px;"></th>
+      <th scope="col">Name</th>
+      <th scope="col" class="text-right">Amount</th>
+      <th scope="col">Description</th>
+      <th scope="col">Tags</th>
+      <th scope="col" style="width:100px;">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of expenses">
+      <td class="text-center">
+        <i class="far fa-edit action-icon" ngbTooltip="Edit" [routerLink]="['edit', item.expenseName.toLowerCase(), item.expenseId]"></i>
+        &nbsp;
+        <i class="fa fa-trash action-icon" ngbTooltip="Delete" (click)="onDelete(item)"></i>
+      </td>
+      <td class="text-center">
+        <app-expense-render-category [expenseCategory]="item.categoryName"></app-expense-render-category>
+      </td>
+      <td>{{item.expenseName}}</td>
+      <td class="text-right">{{item.expenseAmount | inrCurrency}}</td>
+      <td>{{item.expenseDesc}}</td>
+      <td>
+        <app-expense-render-tags [tags]="item.expenseTags"></app-expense-render-tags>
+      </td>
+      <td>{{item.expenseDate | date : 'yyyy-MM-dd'}}</td>
+    </tr>
+    <tr class="tbl-tr-total" *ngIf="totalExpense && totalExpense > 0">
+      <td class="text-right" colspan="3">Total Expense</td>
+      <td class="text-right">{{totalExpense | inrCurrency}}</td>
+    </tr>
+  </tbody>
+</table>

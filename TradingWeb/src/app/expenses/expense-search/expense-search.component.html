@@ -1,0 +1,91 @@
+<div class="card">
+  <div class="card-header">
+    Search Expenses
+  </div>
+  <div class="card-body">
+    <span class="add-exp-container">
+      <button type="button" class="btn btn-primary" [routerLink]="['add']">Add Expense</button>
+    </span>
+    <div class="row">
+      <div class="col-md">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'active': selectedTab == 'cm'}" data-toggle="tab" role="tab" href="javascript:void(0);" (click)="onTabClick($event, 'cm');" aria-selected="false">Current Month</a>
+          </li>
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'active': selectedTab == '3m'}" data-toggle="tab" role="tab" href="javascript:void(0);" (click)="onTabClick($event, '3m');" aria-selected="false">Last 3 Months</a>
+          </li>
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'active': selectedTab == '6m'}" data-toggle="tab" role="tab" href="javascript:void(0);" (click)="onTabClick($event, '6m');" aria-selected="false">Last 6 Months</a>
+          </li>
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'active': selectedTab == 'ytd'}" data-toggle="tab" role="tab" href="javascript:void(0);" (click)="onTabClick($event, 'ytd');" aria-selected="true">YTD</a>
+          </li>
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'active': selectedTab == 'cs'}" data-toggle="tab" role="tab" href="javascript:void(0);" (click)="onTabClick($event, 'cs');" aria-selected="false">Custom Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <div class="row" *ngIf="selectedTab == 'cs'">
+      <div class="col-md">
+        <form [formGroup]="searchForm" (submit)="onSeachSubmit()">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <div class="input-group">
+                <input class="form-control" formControlName="startDate" ngbDatepicker #startDate="ngbDatepicker" placeholder="Start Date">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <div class="input-group">
+                <input class="form-control" formControlName="endDate" ngbDatepicker #endDate="ngbDatepicker" placeholder="End Date">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="endDate.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!isSeachFormValid">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="showSearchResult">
+      <div class="col-md">        
+        <ngb-tabset [justify]="center">
+          <ngb-tab title="Spends">
+            <ng-template ngbTabContent>
+              <br />
+              <app-expense-list [expenses]="expenses"></app-expense-list>                
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Categories">
+            <ng-template ngbTabContent>
+              <br />
+              <app-expense-categories [expenses]="expenses"></app-expense-categories>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Tags">
+            <ng-template ngbTabContent>
+              <br />
+              <app-expense-tags [expenseTags]="expenseTags"></app-expense-tags>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Fund Sources">
+            <ng-template ngbTabContent>
+              <br />
+              <app-expense-fund-sources [expenses]="expenses"></app-expense-fund-sources>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+
+  </div>
+</div>
