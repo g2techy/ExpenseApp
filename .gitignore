@@ -1,4 +1,26 @@
 ﻿
 /TradingAPI/.idea
 /TradingAPI/.mvn
+
+
 /TradingWeb/node_modules
+/TradingWeb/dist
+/TradingWeb/tmp
+/TradingWeb/out-tsc
+
+# IDE - VSCode
+.vscode/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
