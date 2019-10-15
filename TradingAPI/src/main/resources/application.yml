@@ -1,0 +1,16 @@
+spring:
+
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://DESKTOP-0L9EJKB\SQLEXPRESS;databaseName=TradingApp
+    username: sa
+    password: Infotech@123
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+
+server:
+  port: 8081

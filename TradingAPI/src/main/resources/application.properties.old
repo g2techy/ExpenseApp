@@ -1,0 +1,11 @@
+
+spring.datasource.url=jdbc:sqlserver://DESKTOP-0L9EJKB\\SQLEXPRESS;databaseName=TradingApp
+spring.datasource.username=sa
+spring.datasource.password=Infotech@123
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+spring.jpa.hibernate.ddl-auto = none
+
+server.port = 8081
