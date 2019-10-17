@@ -13,8 +13,10 @@
 					<label class="control-label">Expense Date:</label>
 					<div class="input-group">
 						<input class="form-control" formControlName="expenseDate" ngbDatepicker #expenseDate="ngbDatepicker" placeholder="Expense Date">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary calendar" (click)="expenseDate.toggle()" type="button"></button>
+						<div class="input-group-append">              
+							<button class="btn btn-outline-secondary" (click)="expenseDate.toggle()" type="button">
+                <i class="fa fa-calendar"></i>
+              </button>
 						</div>
 					</div>
 				</div>

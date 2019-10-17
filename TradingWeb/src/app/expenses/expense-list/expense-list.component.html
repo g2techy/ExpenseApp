@@ -11,9 +11,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of expenses">
+    <tr *ngFor="let item of expenses" [ngClass]="{'not-expense': !item.isExpense}">
       <td class="text-center">
-        <i class="far fa-edit action-icon" ngbTooltip="Edit" [routerLink]="['edit', item.expenseName.toLowerCase(), item.expenseId]"></i>
+        <i class="far fa-edit action-icon" ngbTooltip="Edit" (click)="closeModals();" [routerLink]="['../', 'edit', item.expenseName.toLowerCase(), item.expenseId]"></i>
         &nbsp;
         <i class="fa fa-trash action-icon" ngbTooltip="Delete" (click)="onDelete(item)"></i>
       </td>

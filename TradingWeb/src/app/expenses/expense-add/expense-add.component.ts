@@ -93,8 +93,7 @@ export class ExpenseAddComponent implements OnInit {
       return;
     }
 
-    let payLoad = this.expenseForm.value;
-    console.log(`payload:`, payLoad);
+    let payLoad = Utility.copyObject(this.expenseForm.value);
     payLoad.expenseDate = Utility.getDateFromDP(payLoad.expenseDate);
 
     let selTags = this.tagListComponent.getSelectedTags();
@@ -109,7 +108,6 @@ export class ExpenseAddComponent implements OnInit {
   }
 
   private saveExpense(expense: any) {
-    console.log('payload', expense);
     this.expenseService.saveExpense(expense).subscribe(res => {
       if(res.statusCode == 200){
         this.sharedService.showSuccessMsg('Expense details saved successfully');

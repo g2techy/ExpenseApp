@@ -9,21 +9,32 @@ export class Utility {
     return date;
   }
 
-  static leftPad(str: any, len: number): string {
-    if(str === null || len <= 0){
-      return str || '';
-    }
-    let s = str + "";
-    while (s.length < len) s = '0' + s;
-    return s;
-  }
-
   static getDatePickerDateFromDate(date: any) {    
     if(date){
       date = new Date(date);
       return { year: date.getFullYear(), month: (date.getMonth()+1), day: date.getDate() };
     }
     return null;
+  }
+
+  static copyObject(obj) : any {
+    return (JSON.parse(JSON.stringify(obj)));
+  }
+
+  static Expense: any;
+}
+
+class ExpenseUtilty {
+
+  static getTotalExpense(exenses): number {
+    let totalAmt = 0;
+    if(exenses){
+      let spends = exenses.filter(e => e.isExpense);
+      if(spends && spends.length > 0){
+        totalAmt = spends.reduce((a, b) => a + b.expenseAmount, 0);
+      }
+    }
+    return totalAmt;
   }
 
   static getExpenseCategories(expenses: any[]) {
@@ -37,7 +48,9 @@ export class Utility {
         } else {
           cv = retunValue.filter(rv => rv.categoryId == item.categoryId)[0];
         }
-        cv.expenseAmount += item.expenseAmount;
+        if(item.isExpense){
+          cv.expenseAmount += item.expenseAmount;
+        }
         cv.expenseCount++;      
       });
     }
@@ -55,15 +68,15 @@ export class Utility {
         } else {
           cv = retunValue.filter(rv => rv.fundSourceId == item.fundSourceId)[0];
         }
-        cv.expenseAmount += item.expenseAmount;
+        if(item.isExpense){
+          cv.expenseAmount += item.expenseAmount;
+        }
         cv.expenseCount++;      
       });
     }
     return retunValue;
   }
 
-  static copyObject(obj) : any {
-    return (JSON.parse(JSON.stringify(obj)));
-  }
-
 }
+
+Utility.Expense = ExpenseUtilty;

@@ -16,9 +16,10 @@ import { ExpenseRenderTagsComponent } from './expense-render-tags/expense-render
 import { ExpenseRenderCategoryComponent } from './expense-render-category/expense-render-category.component';
 import { ExpenseTagsComponent } from './expense-tags/expense-tags.component';
 import { ExpenseFundSourcesComponent } from './expense-fund-sources/expense-fund-sources.component';
+import { ExpenseSearchCommonComponent } from './expense-search/expense-search-common/expense-search-common.component';
 
 @NgModule({
-  declarations: [InrCurrencyPipe, ExpensesComponent, ExpenseListComponent, ExpenseAddComponent, ExpenseSearchComponent, ExpenseCategoriesComponent, ExpenseTagListComponent, ExpenseRenderTagsComponent, ExpenseRenderCategoryComponent, ExpenseTagsComponent, ExpenseFundSourcesComponent],
+  declarations: [InrCurrencyPipe, ExpensesComponent, ExpenseListComponent, ExpenseAddComponent, ExpenseSearchComponent, ExpenseCategoriesComponent, ExpenseTagListComponent, ExpenseRenderTagsComponent, ExpenseRenderCategoryComponent, ExpenseTagsComponent, ExpenseFundSourcesComponent, ExpenseSearchCommonComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SharedService } from '../../shared/shared.service';
 
 import { Utility } from '../../utilities/global-utility';
 
@@ -16,7 +16,7 @@ export class ExpenseCategoriesComponent implements OnInit, OnChanges {
   selectedExpenses: any;
   totalExpense: number = 0;
 
-  constructor(private modalService: NgbModal, private activeModal: NgbActiveModal) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
   }
@@ -24,20 +24,17 @@ export class ExpenseCategoriesComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(changes){
       if(changes['expenses']){
-        this.expenseCategories = Utility.getExpenseCategories(this.expenses);
-        this.totalExpense = this.expenseCategories.reduce((a, b) => a + b.expenseAmount, 0);
-        this.closeModal();
+        this.expenseCategories = Utility.Expense.getExpenseCategories(this.expenses);
+        this.totalExpense = Utility.Expense.getTotalExpense(this.expenseCategories);
+        this.sharedService.closeAllModals();
       }
     }
   }
 
   showExpenses(modalWin, categoryId) {
     this.selectedExpenses = this.expenses.filter(e => e.categoryId == categoryId);
-    this.activeModal = this.modalService.open(modalWin, { size: 'xl' });
+    this.sharedService.showModal(modalWin);
   }
-
-  closeModal() {
-    this.activeModal.close();
-  }
+  
   
 }

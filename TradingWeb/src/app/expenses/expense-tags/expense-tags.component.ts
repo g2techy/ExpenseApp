@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { ExpenseService } from '../../services/expense.service';
 import { SharedService } from '../../shared/shared.service';
 
@@ -15,11 +13,9 @@ import { Utility } from '../../utilities/global-utility';
 export class ExpenseTagsComponent implements OnInit, OnChanges {
 
   @Input() expenseTags: any;
-  totalExpense: number = 0;
   selectedExpenses: any;
   
-  constructor(private modalService: NgbModal, private activeModal: NgbActiveModal,
-              private sharedService: SharedService, private expenseService: ExpenseService) { }
+  constructor(private sharedService: SharedService, private expenseService: ExpenseService) { }
 
   ngOnInit() {
   }
@@ -27,8 +23,7 @@ export class ExpenseTagsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(changes){
       if(changes['expenseTags']){
-        this.totalExpense = this.expenseTags.reduce((a, b) => a + b.expenseAmount, 0);
-        this.closeModal();
+        this.sharedService.closeAllModals();
       }
     }
   }
@@ -40,16 +35,11 @@ export class ExpenseTagsComponent implements OnInit, OnChanges {
       this.selectedExpenses = [];
       if(res.statusCode == 200){
         this.selectedExpenses = res.data;
-        this.activeModal = this.modalService.open(modalWin, { size: 'xl' });
+        this.sharedService.showModal(modalWin);
       } else {
         this.sharedService.showErrorMsg(res.message);
       }
-    });
-   
-  }
-
-  closeModal() {
-    this.activeModal.close();
+    });   
   }
 
 }

@@ -1,0 +1,62 @@
+<div class="row" *ngIf="selectedTab == 'cs'">
+  <div class="col-md">
+    <form [formGroup]="searchForm" (submit)="onSeachSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <div class="input-group">
+            <input class="form-control" formControlName="startDate" ngbDatepicker #startDate="ngbDatepicker" placeholder="Start Date">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button">
+                <i class="fa fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <div class="input-group">
+            <input class="form-control" formControlName="endDate" ngbDatepicker #endDate="ngbDatepicker" placeholder="End Date">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="endDate.toggle()" type="button">
+                <i class="fa fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <button type="submit" class="btn btn-primary" [disabled]="!isSeachFormValid">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" *ngIf="showSearchResult">
+  <div class="col-md">        
+    <ngb-tabset [justify]="center">
+      <ngb-tab title="Spends">
+        <ng-template ngbTabContent>
+          <br />
+          <app-expense-list [expenses]="expenses"></app-expense-list>                
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Categories">
+        <ng-template ngbTabContent>
+          <br />
+          <app-expense-categories [expenses]="expenses"></app-expense-categories>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Tags">
+        <ng-template ngbTabContent>
+          <br />
+          <app-expense-tags [expenseTags]="expenseTags"></app-expense-tags>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Fund Sources">
+        <ng-template ngbTabContent>
+          <br />
+          <app-expense-fund-sources [expenses]="expenses"></app-expense-fund-sources>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

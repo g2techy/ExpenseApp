@@ -80,7 +80,7 @@ public class ExpenseDetailsDTO {
     }
 
     public void setIsExpense(boolean isExpense) {
-        isExpense = isExpense;
+        this.isExpense = isExpense;
     }
 
     public String getExpenseDesc() {
