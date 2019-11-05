@@ -11,15 +11,15 @@ import * as models from '../models/index';
 @Injectable()
 export class ExpenseService {
 
-  private apiUrl : string = '';
-  
+  private apiUrl: string = '';
+
   lastSearchModel: any;
 
-  constructor(private httpClient : HttpClient) {
+  constructor(private httpClient: HttpClient) {
     this.apiUrl = environment.apiBasePath + 'expenses/';
   }
 
-  saveExpense(expense : any): Observable<models.ApiResponse> {
+  saveExpense(expense: any): Observable<models.ApiResponse> {
     return this.httpClient.post<models.ApiResponse>(this.apiUrl + 'save', expense)
       .pipe(map(res => res));
   }
@@ -28,8 +28,8 @@ export class ExpenseService {
     return this.httpClient.get<models.ApiResponse>(this.apiUrl + expenseId)
       .pipe(map(res => res));
   }
-  
-  searchExpense(payload : any): Observable<models.ApiResponse> {
+
+  searchExpense(payload: any): Observable<models.ApiResponse> {
     this.lastSearchModel = payload;
     return this.httpClient.post<models.ApiResponse>(this.apiUrl + 'search', payload)
       .pipe(map(res => res));
@@ -40,17 +40,17 @@ export class ExpenseService {
       .pipe(map(res => res));
   }
 
-  expenseSummaryByTag(payload : any): Observable<models.ApiResponse> {
+  expenseSummaryByTag(payload: any): Observable<models.ApiResponse> {
     return this.httpClient.post<models.ApiResponse>(this.apiUrl + 'summary-by-tag', payload)
       .pipe(map(res => res));
   }
 
-  searchExpensesByTag(payload : any): Observable<models.ApiResponse> {
+  searchExpensesByTag(payload: any): Observable<models.ApiResponse> {
     return this.httpClient.post<models.ApiResponse>(this.apiUrl + 'find-by-tag', payload)
       .pipe(map(res => res));
   }
 
-  private _beforeDelete$: Subject<any> = new Subject<any>(); 
+  private _beforeDelete$: Subject<any> = new Subject<any>();
   beforeDeleteExpense(expense: any) {
     this._beforeDelete$.next(expense);
   }
@@ -64,6 +64,14 @@ export class ExpenseService {
   }
   get afterDelete$() {
     return this._afterDelete$;
+  }
+
+  downloadTemplate() {
+    return this.httpClient.get(this.apiUrl + 'download-template', { responseType: 'blob' });
+  }
+
+  uploadTemplate(payload: any) {
+    return this.httpClient.post(this.apiUrl + 'upload', payload, { responseType: 'blob' });
   }
 
 }

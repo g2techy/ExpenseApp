@@ -1,60 +1,60 @@
 <div class="card">
-	<div class="card-header">
-		{{headerText}}
-	</div>
-	<div class="card-body">
-		<form [formGroup]="expenseForm" (submit)="onSubmit()" novalidate>
-			<div class="form-row">
-				<div class="form-group col-md-3">
-					<label class="control-label">Expense Name:</label>
-					<input class="form-control" formControlName="expenseName" placeholder="Expense Name">
-				</div>
-				<div class="form-group col-md-3">
-					<label class="control-label">Expense Date:</label>
-					<div class="input-group">
-						<input class="form-control" formControlName="expenseDate" ngbDatepicker #expenseDate="ngbDatepicker" placeholder="Expense Date">
-						<div class="input-group-append">              
-							<button class="btn btn-outline-secondary" (click)="expenseDate.toggle()" type="button">
+  <div class="card-header">
+    {{headerText}}
+  </div>
+  <div class="card-body">
+    <form [formGroup]="expenseForm" (submit)="onSubmit()" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label class="control-label">Expense Name:</label>
+          <input class="form-control" formControlName="expenseName" placeholder="Expense Name">
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Expense Date:</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="expenseDate" ngbDatepicker #expenseDate="ngbDatepicker" placeholder="Expense Date">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="expenseDate.toggle()" type="button">
                 <i class="fa fa-calendar"></i>
               </button>
-						</div>
-					</div>
-				</div>
-				<div class="form-group col-md-3">
-					<label class="control-label">Expense Amount:</label>
-					<input class="form-control" type="number" formControlName="expenseAmount" placeholder="Expense Amount">
-				</div>
-				<div class="form-group col-md-3">
-					<label class="control-label">Expense Category:</label>
-					<select class="form-control" formControlName="categoryId">
-						<option *ngFor="let item of expenseCategoties" value="{{item.typeValueId}}">{{item.typeValueName}}</option>
-					</select>
-				</div>
-				<div class="form-check col-md-3">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" formControlName="isExpense">
-						<label class="form-check-label">Is Expense:</label>					
-					</div>
-				</div>
-				<div class="form-group col-md-3">
-					<label class="control-label">Expense Source:</label>
-					<select class="form-control" formControlName="fundSourceId">
-						<option *ngFor="let item of fundSources" value="{{item.typeValueId}}">{{item.typeValueName}}</option>
-					</select>
-				</div>
-				<div class="form-group col-md-6">
-					<label class="control-label">Description:</label>
-					<textarea class="form-control" formControlName="expenseDesc" rows="1"></textarea>			
-				</div>
-				<div class="form-group col-md-12">
-					<label class="control-label">Tags:</label>
-					<app-expense-tag-list [tags]="expenseTags" [selectedTags]="expenseDetailsModel ? expenseDetailsModel.expenseTags : []"></app-expense-tag-list>		
-				</div>
-			</div>
-			<div class="form-group btn-container" style="text-align:center;margin-top: 15px;">
-				<button type="submit" class="btn btn-primary" [disabled]="!isFormValid">Save</button>
-				<button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>          
-			</div>
-		</form>
-	</div> 
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Expense Amount:</label>
+          <input class="form-control" type="number" formControlName="expenseAmount" placeholder="Expense Amount">
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Expense Category:</label>
+          <select class="form-control" formControlName="categoryId">
+            <option *ngFor="let item of expenseCategoties" value="{{item.typeValueId}}">{{item.typeValueName}}</option>
+          </select>
+        </div>
+        <div class="form-check col-md-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="isExpense">
+            <label class="form-check-label">Is Expense:</label>
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="control-label">Expense Source:</label>
+          <select class="form-control" formControlName="fundSourceId">
+            <option *ngFor="let item of fundSources" value="{{item.typeValueId}}">{{item.typeValueName}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="control-label">Description:</label>
+          <textarea class="form-control" formControlName="expenseDesc" rows="1"></textarea>
+        </div>
+        <div class="form-group col-md-12">
+          <label class="control-label">Tags:</label>
+          <app-expense-tag-list [tags]="expenseTags" [selectedTags]="expenseDetailsModel ? expenseDetailsModel.expenseTags : []"></app-expense-tag-list>
+        </div>
+      </div>
+      <div class="form-group btn-container" style="text-align:center;margin-top: 15px;">
+        <button type="submit" class="btn btn-primary" [disabled]="!isFormValid">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>
+      </div>
+    </form>
+  </div>
 </div>

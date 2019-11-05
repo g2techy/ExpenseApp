@@ -1,5 +1,6 @@
 package com.g2.tradingApp.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class ExpenseDetailsDTO {
     private Long fundSourceId;
 
     private String fundSourceName;
+
+    private List<String> errors = new ArrayList<>();
 
     private List<ExpenseTagDetailsDTO> expenseTags;
 
@@ -113,6 +116,14 @@ public class ExpenseDetailsDTO {
 
     public void setExpenseTags(List<ExpenseTagDetailsDTO> expenseTags) {
         this.expenseTags = expenseTags;
+    }
+
+    public List<String> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(List<String> errors) {
+        this.errors = errors;
     }
 
 }

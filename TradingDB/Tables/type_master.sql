@@ -12,7 +12,7 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[type_master](
-	[type_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[type_id] [bigint] NOT NULL,
 	[type_name] [varchar](50) NOT NULL,
 	[is_active] [bit] NOT NULL CONSTRAINT [DF_TypeMaster_IsActive]  DEFAULT ((1)),
 	[created_by] [bigint] NOT NULL,

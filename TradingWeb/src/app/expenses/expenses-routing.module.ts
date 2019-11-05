@@ -6,6 +6,7 @@ import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { ExpenseAddComponent } from './expense-add/expense-add.component';
 import { ExpenseSearchComponent } from './expense-search/expense-search.component';
 import { ExpenseSearchCommonComponent } from './expense-search/expense-search-common/expense-search-common.component';
+import { ExpenseUploadComponent } from './expense-upload/expense-upload.component';
 
 const routes : Routes = [
   { path : '', 
@@ -50,7 +51,11 @@ const routes : Routes = [
       { 
         path: 'edit/:name/:id', 
         component: ExpenseAddComponent 
-      }
+      },
+      { 
+        path: 'upload', 
+        component: ExpenseUploadComponent 
+      },
     ]
   },
 ];

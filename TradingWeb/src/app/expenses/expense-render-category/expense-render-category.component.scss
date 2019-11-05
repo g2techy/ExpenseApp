@@ -6,4 +6,39 @@
     text-align: center;
     vertical-align: middle;
     background: #ced4da;
+    color: #ffffff;
+}
+
+.exp-cat-Ac { background: #047ef0; }
+.exp-cat-Bi { background: #023b1f; }
+.exp-cat-Ed { background: #ebd34f; }
+.exp-cat-Em { background: #444e57; }
+.exp-cat-En { background: #a10fbe; }
+.exp-cat-Fl { background: #a2b2c0; }
+.exp-cat-Fo { background: #0ceb29; }
+.exp-cat-Gr { background: #02ce02; }
+.exp-cat-He { background: #d8556b; }
+.exp-cat-In { background: #93aeb3; }
+.exp-cat-Me { background: #d8556b; }
+.exp-cat-Of { background: #6e6f70; }
+.exp-cat-Ot { background: #9b0909; }
+.exp-cat-Re { background: #08e9c3; }
+.exp-cat-Sh { background: #c99b04; }
+.exp-cat-Tr { background: #d40980; }
+
+.fa-investment::before {
+    content: "$";
+    font-size: 20px;
+}
+.fa-rent::before {
+    content: "R";
+    font-size: 20px;
+}
+.fa-food::before {
+    content: "F";
+    font-size: 20px;  
+}
+.fa-transfer::before {
+    content: "T";
+    font-size: 20px;
 }

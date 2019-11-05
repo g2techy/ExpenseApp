@@ -68,9 +68,9 @@ export class ExpenseSearchCommonComponent implements OnInit {
 
   private searchExpenses(payload: any) {    
     this.expenseService.searchExpense(payload).subscribe(res => {
+      this.showHideSearchResult(true);
       if(res.statusCode == 200){
-        this.expenses = res.data;        
-        this.showHideSearchResult(true);
+        this.expenses = res.data;
       } else {
         this.expenses = [];
         this.sharedService.showErrorMsg(res.message);

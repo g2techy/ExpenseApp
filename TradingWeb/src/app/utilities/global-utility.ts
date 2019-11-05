@@ -1,4 +1,7 @@
 
+import * as _ from 'lodash';
+import { saveAs } from 'file-saver';
+
 export class Utility {
 
   static getDateFromDP(dp : any) : string {
@@ -19,6 +22,10 @@ export class Utility {
 
   static copyObject(obj) : any {
     return (JSON.parse(JSON.stringify(obj)));
+  }
+
+  static downloadExcelFile(res: any, fileName: String) {
+    saveAs(res, fileName, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
 
   static Expense: any;
@@ -54,6 +61,9 @@ class ExpenseUtilty {
         cv.expenseCount++;      
       });
     }
+    if(retunValue.length > 0){
+      retunValue = _.sortBy(retunValue, 'categoryName');
+    }
     return retunValue;
   }
 
@@ -73,6 +83,9 @@ class ExpenseUtilty {
         }
         cv.expenseCount++;      
       });
+    }
+    if(retunValue.length > 0){
+      retunValue = _.sortBy(retunValue, 'fundSourceName');
     }
     return retunValue;
   }

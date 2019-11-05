@@ -1,1 +1,3 @@
-<div class="exp-category" [ngbTooltip]="expenseCategory">{{categoryShortName}}</div>
+<div class="exp-category exp-cat-{{categoryShortName}}" [ngbTooltip]="categoryName">
+  <i class="fa fa-{{getCategoryIcon(categoryName)}}" aria-hidden="true"></i>
+</div>
